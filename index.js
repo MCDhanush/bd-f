@@ -5,7 +5,7 @@ const cors = require("cors");
 mongoDB();
 
 const corsConfig = {
-  origin: "https://jazzy-piroshki-fa94ee.netlify.app/",
+  origin: ["https://jazzy-piroshki-fa94ee.netlify.app"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
@@ -15,7 +15,7 @@ app.options("", cors(corsConfig));
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://jazzy-piroshki-fa94ee.netlify.app/"
+    "https://jazzy-piroshki-fa94ee.netlify.app"
   );
   res.header(
     "Access-Control-Allow-Headers",
