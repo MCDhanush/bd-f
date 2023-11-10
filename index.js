@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const mongoDB = require("./db");
+mongoDB();
 
 const PORT = 9000;
 app.get("/", function (request, response) {
