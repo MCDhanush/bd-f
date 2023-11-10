@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const mongoDB = require("./db.js");
 const cors = require("cors");
-
 mongoDB();
 
 const corsConfig = {
@@ -33,5 +32,4 @@ app.get("/", function (request, response) {
 app.use(express.json());
 app.use("/api", require("./Routes/user.controller.js"));
 app.use("/api", require("./Routes/displayData.js"));
-
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
