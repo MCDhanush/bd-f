@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../model/user.model.js");
 const { body, validationResult } = require("express-validator");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const jwtSecert = "Myname is dhanush mc i'm fullstack developer";
 
@@ -18,8 +18,8 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    // const salt = await bcrypt.genSalt(10);
-    // let secPassword = await bcrypt.hash(req.body.password, salt);
+    const salt = await bcrypt.genSalt(10);
+    let secPassword = await bcrypt.hash(req.body.password, salt);
     try {
       await User.create({
         name: req.body.name,
@@ -54,15 +54,15 @@ router.post(
           .status(400)
           .json({ errors: "Tyr loggin with correct creandtials" });
       }
-      //   const pwdCompare = await bcrypt.compare(
-      //     req.body.password,
-      //     userData.password
-      //   );
-      //   if (!pwdCompare) {
-      //     return res
-      //       .status(400)
-      //       .json({ errors: "Tyr loggin with correct creandtials" });
-      //   }
+      const pwdCompare = await bcrypt.compare(
+        req.body.password,
+        userData.password
+      );
+      if (!pwdCompare) {
+        return res
+          .status(400)
+          .json({ errors: "Tyr loggin with correct creandtials" });
+      }
       const data = {
         user: { id: userData.id },
       };
