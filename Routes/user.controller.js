@@ -2,7 +2,7 @@ const express = require("express");
 // const { route } = require("./Createuser");
 const router = express.Router();
 
-router.post("/foodData", (req, res) => {
+router.get("/foodData", (req, res) => {
   try {
     // console.log(global.food_items);
     res.send([global.food_items, global.foodcategory]);
