@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const jwtSecert = "Myname is dhanush mc i'm fullstack developer";
 // const bcrypt = require("bcrypt");
 // const bcrypt = require("bcrypt");
+const bcrypt = require("../node_modules/bcrypt");
 
 router.post(
   "/createuser",
