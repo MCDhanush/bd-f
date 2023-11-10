@@ -13,17 +13,17 @@ const corsConfig = {
 app.use(cors(corsConfig));
 app.options("", cors(corsConfig));
 
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     "Access-Control-Allow-Origin",
-//     "https://jazzy-piroshki-fa94ee.netlify.app/"
-//   );
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin,X-Requested-With,Content-Type,Accept"
-//   );
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://jazzy-piroshki-fa94ee.netlify.app/"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Requested-With,Content-Type,Accept"
+  );
+  next();
+});
 
 const PORT = 9000;
 app.get("/", function (request, response) {
