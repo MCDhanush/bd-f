@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const jwtSecert = "Myname is dhanush mc i'm fullstack developer";
 // const bcrypt = require("bcrypt");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 router.post(
   "/createuser",
