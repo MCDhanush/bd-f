@@ -5,7 +5,7 @@ const cors = require("cors");
 mongoDB();
 
 const corsConfig = {
-  origin: "",
+  origin: "https://jazzy-piroshki-fa94ee.netlify.app/",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
