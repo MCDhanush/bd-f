@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const User = require("../model/user.model.js");
 const { body, validationResult } = require("express-validator");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const jwtSecert = "Myname is dhanush mc i'm fullstack developer";
+const bcrypt = require("bcrypt");
 
 router.post(
   "/createuser",
@@ -17,6 +17,9 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
+    }
+    if ((email = req.body.email)) {
+      return res.status(400).json({ errors: "email already exist" });
     }
     const salt = await bcrypt.genSalt(10);
     let secPassword = await bcrypt.hash(req.body.password, salt);
