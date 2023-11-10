@@ -5,7 +5,8 @@ const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const jwtSecert = "Myname is dhanush mc i'm fullstack developer";
 // const bcrypt = require("bcrypt");
-const bcrypt = require("../node_modules/bcrypt/bcrypt.js");
+// const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 router.post(
   "/createuser",
@@ -22,8 +23,8 @@ router.post(
     if ((email = req.body.email)) {
       return res.status(400).json({ errors: "email already exist" });
     }
-    const salt = await bcrypt.genSalt(10);
-    let secPassword = await bcrypt.hash(req.body.password, salt);
+    const salt = await crypto.genSalt(10);
+    let secPassword = await crypto.hash(req.body.password, salt);
     try {
       await User.create({
         name: req.body.name,
@@ -58,7 +59,7 @@ router.post(
           .status(400)
           .json({ errors: "Tyr loggin with correct creandtials" });
       }
-      const pwdCompare = await bcrypt.compare(
+      const pwdCompare = await crypto.compare(
         req.body.password,
         userData.password
       );
