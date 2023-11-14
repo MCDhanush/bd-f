@@ -5,7 +5,7 @@ const cors = require("cors");
 mongoDB();
 
 const corsConfig = {
-  origin: ["http://localhost:3000"],
+  origin: ["https://deluxe-youtiao-b6037c.netlify.app"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
@@ -13,7 +13,10 @@ app.use(cors(corsConfig));
 app.options("", cors(corsConfig));
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://deluxe-youtiao-b6037c.netlify.app"
+  );
   res.header(
     "Access-Control-Allow-Headers",
     "Origin,X-Requested-With,Content-Type,Accept"
